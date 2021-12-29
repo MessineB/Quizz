@@ -15,7 +15,6 @@ function shuffleArray(array) {                         // Fonction du tri aleato
 
 }
 
-
  async function ReadQuestion () {     
     const MyData = await getJson();             //
     Tableau.push(...MyData);                    //                       //
