@@ -1,0 +1,11 @@
+div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.quizz {
+    display: flex;
+}
+aside {
+    padding-right: 20%;
+}
