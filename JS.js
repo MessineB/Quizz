@@ -16,20 +16,27 @@ function shuffleArray(array) {                         // Fonction du tri aleato
 }
 
  async function ReadQuestion () {     
-    const MyData = await getJson();             //
-    Tableau.push(...MyData);                    //                       //
-    console.log(MyData[0])
+    const MyData = await getJson();             //Je recupere mes données Json et je les envoi dans un tableau
+    Tableau.push(...MyData);                    //                       
+    console.log(Tableau)
 
 }
 
+
 function AfficheQuestion() {
-    var question1 = MyData[0].question;       //  
+    console.log(Tableau)
+    var question1 = Tableau[0].question;                  //   J'affiche la premiere question de mon tableau dans mon html
     var text1 = document.getElementById('1quest');      //
     text1.innerHTML = question1;           
 }
 
-ReadQuestion ();
-AfficheQuestion();
+async function init() {
+    await ReadQuestion()
+    AfficheQuestion();
+}
+
+init()
+
 
 
  
