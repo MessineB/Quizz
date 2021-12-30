@@ -1,11 +1,18 @@
 div {
     display: flex;
-    justify-content: space-between;
+    
 }
 
 .quizz {
     display: flex;
+    flex-wrap: wrap;
 }
 aside {
-    padding-right: 20%;
+    padding-right: 10%;
+}
+
+.Formulaire {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
 }
