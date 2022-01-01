@@ -36,8 +36,10 @@ function AfficheQuestion() {
             let Input = document.createElement("input")
             Input.setAttribute("type", "radio")
             Input.name = "Input"
+            Input.id ="Valeur"
             Input.value = Tableau[u].propositions[i]
             let Label = document.createElement("label")
+            Label.for = "Valeur"
             Label.innerHTML = Tableau[u].propositions[i]
             form.appendChild(Input)
             form.appendChild(Label)
@@ -50,9 +52,20 @@ function AfficheQuestion() {
 
 
 
+
+
 async function init() {
     await ReadQuestion()
     AfficheQuestion();
+    
 }
 
 init()
+
+const BoutonJS = document.getElementById('bouton')
+BoutonJS.addEventListener("click" , Verify())
+
+function Verify() {
+    
+    console.log("Bonjour")
+}
