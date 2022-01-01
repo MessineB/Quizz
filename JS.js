@@ -32,7 +32,7 @@ function AfficheQuestion() {
         Paragraph.innerHTML = Tableau[u].question;
 
 
-        for ( var i=0 ; i < 4 ; i++) {
+        for ( var i=0 ; i < Tableau[u].propositions.length ; i++) {
             let Input = document.createElement("input")
             Input.setAttribute("type", "radio")
             Input.name = "Input"
@@ -52,20 +52,37 @@ function AfficheQuestion() {
 
 
 
-
+const BoutonJS = document.getElementById('bouton')
 
 async function init() {
     await ReadQuestion()
     AfficheQuestion();
+    BoutonJS.addEventListener("click" , Verify)
     
 }
 
 init()
 
-const BoutonJS = document.getElementById('bouton')
-BoutonJS.addEventListener("click" , Verify())
+
+var Score=0
+var ScoreFinal = document.getElementById("Score Final")
 
 function Verify() {
-    
-    console.log("Bonjour")
+    for (let v=0 ; v<9 ; v++) {console.log(Tableau[v].propositions.length) 
+       for (let f=0 ; f < Tableau[v].propositions.length;f++ ) {
+        console.log(Tableau[v].réponse)
+        let BoutonCoché = document.querySelector('input[name=Input]:checked').value;
+        if (BoutonCoché == Tableau[v].réponse ) {
+            Score++
+            console.log("GG")
+            
+        }
+       
+       }
+       
+    }
+    ScoreFinal.innerHTML += Score;
+    Score=0;
+    ScoreFinal= "Votre Score est de :"
+
 }
