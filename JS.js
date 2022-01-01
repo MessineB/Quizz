@@ -1,6 +1,7 @@
 
 const api_url ='https://messineb.github.io/JASON.Json'
 const Tableau = []
+const Nbrquestion = 9
 
 const getJson = async() => {  
     const response = await fetch(api_url);
@@ -24,7 +25,7 @@ function AfficheQuestion() {
 
     var Main = document.getElementsByClassName("quizz")
 
-    for ( var u=0 ; u<9 ; u++) {
+    for ( var u=0 ; u< Nbrquestion ; u++) {
         let form = document.createElement("form")
         form.className="Formulaire"
         let Paragraph = document.createElement("p")
@@ -36,10 +37,8 @@ function AfficheQuestion() {
             let Input = document.createElement("input")
             Input.setAttribute("type", "radio")
             Input.name = "Input"
-            Input.id = "Valeur"
             Input.value = Tableau[u].propositions[i]
             let Label = document.createElement("label")
-           
             Label.innerHTML = Tableau[u].propositions[i]
             form.appendChild(Input)
             form.appendChild(Label)
@@ -67,31 +66,26 @@ init()
 var Score=0
 var ScoreFinal = document.getElementById("Score Final")
 
+
 function Verify() {
+    var Check = [];
+    Check = document.querySelectorAll("input:checked");
+    
+    if ( Check.length == Nbrquestion){
     for (let v=0 ; v<9 ; v++) {
-       
-     
-        if (document.getElementById("Valeur").checked == true ) {
-
-            var Reponsecoché = (document.getElementById("Valeur"))
-            console.log(Reponsecoché)
-        }
-
-       for (let f=0 ; f < Tableau[v].propositions.length;f++ ) {
-        
-        
-
-        if ( Reponsecoché == Tableau[v].réponse ) {
+       console.log(Check[v].value)
+       console.log(Tableau[v].réponse)
+      
+        if ( Check[v].value === Tableau[v].réponse ) {
             Score++
-            console.log("GG")
-            
+           
         }
-       
-       }
-       
     }
-    ScoreFinal.innerHTML += Score;
-    Score=0;
-    ScoreFinal= "Votre Score est de :"
-
+    alert ("Votre score est de :", Score ,"")  
+}
+    else {
+    alert("Vous devez remplir toutes les questions !")
+    
+}
+    
 }

@@ -19,3 +19,27 @@ aside {
     padding-top: 5%;
     padding-right: 3%;
 }
+#articleHeader {
+    display: flex;
+    justify-content: center;
+
+}
+#bouton {
+    display: flex;
+    justify-content: center;
+}
+
+.hr {
+    width: 80%;
+}
+
+
+@media screen and (max-width: 811px){
+
+    .Formulaire {
+        width: auto;
+    }
+
+
+
+}
