@@ -36,14 +36,14 @@ function AfficheQuestion() {
             let Input = document.createElement("input")
             Input.setAttribute("type", "radio")
             Input.name = "Input"
-            Input.id ="Valeur"
+            Input.id = "Valeur"
             Input.value = Tableau[u].propositions[i]
             let Label = document.createElement("label")
-            Label.for = "Valeur"
+           
             Label.innerHTML = Tableau[u].propositions[i]
             form.appendChild(Input)
             form.appendChild(Label)
-            console.log(Label)
+            
     }
     Main[0].appendChild(form)
 
@@ -68,11 +68,20 @@ var Score=0
 var ScoreFinal = document.getElementById("Score Final")
 
 function Verify() {
-    for (let v=0 ; v<9 ; v++) {console.log(Tableau[v].propositions.length) 
+    for (let v=0 ; v<9 ; v++) {
+       
+     
+        if (document.getElementById("Valeur").checked == true ) {
+
+            var Reponsecoché = (document.getElementById("Valeur"))
+            console.log(Reponsecoché)
+        }
+
        for (let f=0 ; f < Tableau[v].propositions.length;f++ ) {
-        console.log(Tableau[v].réponse)
-        let BoutonCoché = document.querySelector('input[name=Input]:checked').value;
-        if (BoutonCoché == Tableau[v].réponse ) {
+        
+        
+
+        if ( Reponsecoché == Tableau[v].réponse ) {
             Score++
             console.log("GG")
             
