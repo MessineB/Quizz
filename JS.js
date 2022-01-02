@@ -90,7 +90,7 @@ function Verify() {
     alert("Vous devez remplir toutes les questions !")
     
 }
-    
+    Score=0
 }
 
 
