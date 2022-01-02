@@ -54,17 +54,21 @@ function AfficheQuestion() {
 const BoutonJS = document.getElementById('bouton')
 
 async function init() {
-    await ReadQuestion()
+    await ReadQuestion();
     AfficheQuestion();
+    Joueur();
     BoutonJS.addEventListener("click" , Verify)
-    
+   
 }
 
 init()
-
+function Joueur() {
+    var Nomdujoueur = prompt("Bienvenue, entre ton nom joueur !")
+   document.getElementById('articleHeader').innerText = "Bienvenue sur mon quizz " + Nomdujoueur  
+}
 
 var Score=0
-var ScoreFinal = document.getElementById("Score Final")
+
 
 
 function Verify() {
@@ -73,15 +77,14 @@ function Verify() {
     
     if ( Check.length == Nbrquestion){
     for (let v=0 ; v<9 ; v++) {
-       console.log(Check[v].value)
-       console.log(Tableau[v].réponse)
-      
         if ( Check[v].value === Tableau[v].réponse ) {
             Score++
            
         }
     }
-    alert ("Votre score est de :", Score ,"")  
+    document.getElementById("ScoreFinal").innerText = "Votre score est de : " + Score  
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
 }
     else {
     alert("Vous devez remplir toutes les questions !")
@@ -89,3 +92,7 @@ function Verify() {
 }
     
 }
+
+
+
+

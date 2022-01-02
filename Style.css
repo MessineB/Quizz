@@ -1,32 +1,60 @@
+body {
+    padding: 0;
+    margin : 0;
+ 
+   background-color: darkcyan;
+}
+
+.page{
+    margin-left: 10%;
+    margin-right: 10%;
+     
+}
+
 div {
     display: flex;
     
 }
-
+header {
+    padding-top: 5%;
+    padding-bottom: 2%;
+    background-color: rgb(207, 163, 105);
+}
 .quizz {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    padding-bottom: 3%;
+    background-color: beige;
 }
-aside {
-    padding-right: 10%;
-}
+
 
 .Formulaire {
     display: flex;
     flex-direction: column;
     width: 30%;
     padding-top: 5%;
-    padding-right: 3%;
+    
 }
 #articleHeader {
     display: flex;
     justify-content: center;
+    padding-bottom: 3%;
 
 }
-#bouton {
+
+footer {
+    padding-top: 5%;
     display: flex;
     justify-content: center;
+    padding-bottom: 5%;
+    background-color: rgb(207, 163, 105);
+}
+
+#ScoreFinal {
+    display: flex;
+    justify-content: center;
+
 }
 
 .hr {
@@ -40,6 +68,14 @@ aside {
         width: auto;
     }
 
-
-
+footer {
+    flex-direction: column;
+}
+.page {
+    margin-right: 0;
+    margin-left: 0;
+}
+#bouton {
+    padding: 10%;
+}
 }
