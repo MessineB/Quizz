@@ -46,7 +46,7 @@ header {
 footer {
     padding-top: 5%;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     padding-bottom: 5%;
     background-color: rgb(207, 163, 105);
 }
