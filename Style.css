@@ -55,7 +55,12 @@ footer {
     display: flex;
     justify-content: center;
 }
-
+#debut {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: bottom 5%;;
+}
 
 .hr {
     width: 80%;
@@ -63,7 +68,9 @@ footer {
 .green{
     color: rgba(33, 245, 33, 0.726);
 }
-
+article {
+    padding-bottom: 2%;
+}
 
 @media screen and (max-width: 811px){
 

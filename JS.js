@@ -1,8 +1,9 @@
 
 const api_url ='https://messineb.github.io/JASON.Json'
 const Tableau = []
-const Tableauscore = []
-const Nbrquestion = 1
+var tableauscore = []
+const Nbrquestion = 3
+var aff = 0;
 
 const getJson = async() => {  
     const response = await fetch(api_url);
@@ -38,7 +39,8 @@ function AfficheQuestion() {                    //La fonction qui affiche les qu
             Input.type="radio"     //J'attribue a mes input un type et je met en radio
             Input.name = "Input"    //J'attribue un name a mes input = Input
             Input.value = Tableau[u].propositions[i]    //On attribue une value a mes input qui me permettera de recuperé la valeur plus tard 
-            var Label = document.createElement("label") //On crée des label en HTML et on le relie avec une variable Label en JS
+            var Label = document.createElement("label")
+            Label.className="Label"; //On crée des label en HTML et on le relie avec une variable Label en JS
             Label.innerHTML = Tableau[u].propositions[i] //Dans mon Label je met les propositions
             form.appendChild(Input)   
             form.appendChild(Label)           
@@ -47,27 +49,25 @@ function AfficheQuestion() {                    //La fonction qui affiche les qu
     }
 }
 
-const BoutonJS = document.getElementById('bouton')
-const BoutonJS2 = document.getElementById('bouton2')
+const BoutonJS = document.getElementById('bouton')          
+
+
 async function init() {
     await ReadQuestion();
     AfficheQuestion();
     BoutonJS.addEventListener("click" , Verify) 
-    BoutonJS2.addEventListener("click",effacestorage)
-    
-
 }
 init()
-
 
 var Score=0;
 
 function Verify() {
+   var Lab = document.getElementsByClassName("Label");
     var debut = document.getElementById("debut");
     var Check = [];
     Check = document.querySelectorAll("input:checked");
     if ( Check.length == Nbrquestion){
-    for (let v=0 ; v<1 ; v++) {
+    for (let v=0 ; v<Nbrquestion ; v++) {
         if ( Check[v].value === Tableau[v].réponse ) {
             Score++   
         }
@@ -77,31 +77,54 @@ function Verify() {
     document.documentElement.scrollTop = 0;
     var Nomdujoueur = prompt("Bienvenue, entre ton nom joueur !")
 document.getElementById('articleHeader').innerText = "Merci d'avoir joué a mon quizz " + Nomdujoueur  
-  localStorage.setItem(Nomdujoueur , Score);
+// localStorage.setItem(Nomdujoueur , Score);
     stockage = localStorage;
-    console.log(stockage)
+    
+
+    var obj = {
+        nom: Nomdujoueur,
+        score: Score
+    }
+    
+    var scores = JSON.parse(localStorage.getItem("users"));
+    
+    if(scores === null) {
+        scores = []
+    }
+    scores.push(obj)
+    
+    localStorage.setItem("users", JSON.stringify(scores))
+    scores.sort((a, b) =>   b.score - a.score);
+    
+
+
+    // tableauscore.sort((a, b) => a.value - b.value);
+
+    if (aff==0) {
     for ( let s=0; s<5 ;s++ ) {
-    var best = stockage.key(s);
-    bestscore = localStorage.getItem(best);
     var affichescore = document.createElement("article");
-    const variar = document.createTextNode(best)
-    const variar2 = document.createTextNode(bestscore)
+    const variar = document.createTextNode(scores[s].nom)
+    const variar2 = document.createTextNode(scores[s].score)
     affichescore.appendChild(variar)
     affichescore.appendChild(variar2)
     debut.appendChild(affichescore);
-    affichescore.innerHTML = " Numero "+s+" est " + best +" avec un score de : "  +bestscore ;
+
+
+    var c = s+1
+
+    affichescore.innerHTML = " La  "+c+" place appartient a " + scores[s].nom +" avec un score de : "  +scores[s].score ;
+    }
+    
 }
 }
     else {
-    alert("Vous devez remplir toutes les questions !")
-    
+    alert("Vous devez remplir toutes les questions !")   
 }
-
     Score=0
+    aff=1
 }
 
-function effacestorage(stockage) {
-    localStorage.clear(stockage);
-}
+
+
 
 
