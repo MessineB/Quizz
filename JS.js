@@ -2,7 +2,7 @@
 const api_url ='https://messineb.github.io/JASON.Json'
 const Tableau = []
 var tableauscore = []
-const Nbrquestion = 3
+const Nbrquestion = 9
 var aff = 0;
 
 const getJson = async() => {  
