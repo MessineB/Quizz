@@ -54,11 +54,14 @@ footer {
 #ScoreFinal {
     display: flex;
     justify-content: center;
-
 }
+
 
 .hr {
     width: 80%;
+}
+.green{
+    color: rgba(33, 245, 33, 0.726);
 }
 
 
